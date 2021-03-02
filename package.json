@@ -16,7 +16,7 @@
   },
   "scripts": {
     "develop": "react-scripts start",
-    "production": "serve .",
+    "production": "serve ./build",
     "build": "react-scripts build",
     "buildjson": "python build.py",
     "test": "react-scripts test",
