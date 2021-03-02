@@ -6,16 +6,15 @@ import './style.scss';
 
 const ArticleList = ({articles}) => {
 
-  function getQueryVariable(variable) {
+  const getQueryVariable = (variable) => {
     var query = window.location.search.substring(1);
     var vars = query.split('&');
     for (var i = 0; i < vars.length; i++) {
         var pair = vars[i].split('=');
-        if (decodeURIComponent(pair[0]) == variable) {
+        if (decodeURIComponent(pair[0]) === variable.toString()) {
             return decodeURIComponent(pair[1]);
         }
     }
-    console.log('Query variable %s not found', variable);
   }
 
   const page = Number(getQueryVariable('page')) || 1;
@@ -25,25 +24,34 @@ const ArticleList = ({articles}) => {
   const articlesByCategory = getArticlesByCategory(articles, category);
   const paginationLength = chunk(articlesByCategory, 30).length;
   const _articles = take( slice( articlesByCategory, (page-1) * 30), 30);
+
+  const Pagination = () => (
+    <div className={'pagination'}>
+      { range(paginationLength).map(i => {
+        const to = `${category ? `/category/${category}` : 'articles'}?page=${i+1}`
+        const className = (i+1) === page ? 'active' : ''
+        return <Link 
+          to={to} 
+          className={className}
+          onClick={() => window.scrollTo(0, 0)}
+        > {i+1} </Link>
+      }) }
+    </div>
+  )
   
   return (
     <div id={'article-list'}>
 
       <div className={'pagination'}>
+       <Link to={`/`} className={!category ? 'active' : ''}>All Categories</Link>
         { categories.map(c => {
-          const to = `${category ? `/category/${kebabCase(c)}` : 'articles'}?page=${1}`
+          const to = `${c ? `/category/${kebabCase(c)}` : 'articles'}?page=1`
           const className = kebabCase(c) === category ? 'active' : ''
           return <Link to={to} className={className}> {c} </Link>
         }) }
       </div>
 
-      <div className={'pagination'}>
-        { range(paginationLength).map(i => {
-          const to = `${category ? `/category/${category}` : 'articles'}?page=${i+1}`
-          const className = (i+1) === page ? 'active' : ''
-          return <Link to={to} className={className}> {i+1} </Link>
-        }) }
-      </div>
+      <Pagination/>
 
       { _articles.map( (article, index) => {
         return <ArticleCard 
@@ -53,6 +61,9 @@ const ArticleList = ({articles}) => {
           category={category}
         />;
       })}
+
+      <Pagination/>
+
     </div>
   );
 }

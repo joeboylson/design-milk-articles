@@ -41,7 +41,7 @@ const ArticleCard = ({article, link, category}) => {
 
               return <Link 
                 key={index} 
-                className={`tag mono ${category === kebabCase(tag) ? 'active' : ''}`} 
+                className={`tag mono small ${category === kebabCase(tag) ? 'active' : ''}`} 
                 to={`/category/${kebabCase(tag)}`}
               >{tag}</Link>
             })}

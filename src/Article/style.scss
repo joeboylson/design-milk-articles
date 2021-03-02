@@ -1,9 +1,17 @@
+@import '../style.scss';
+
 .article {
 
+  a {
+    @include transition;
+  }
+
   .back-button {
+    @include transition;
+
     position: fixed;
     top: 0;
-    left: 49px;
+    left: 0;
     width: 49px;
     height: 49px;
 
@@ -13,6 +21,17 @@
     outline: none;
     background-color: #DDD;
     z-index: +1;
+
+    svg {
+      fill: #2c2c2c;
+    }
+
+    &:hover {
+      background-color: #2c2c2c;
+      svg {
+        fill: #DDD;
+      }
+    }
   }
 
   .article-content {
@@ -23,7 +42,7 @@
 
   .article-header {
 
-    margin-top: 64px;
+    margin-top: 96px;
 
     img {
       border: 1px solid black;
@@ -43,19 +62,15 @@
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: 48px;
 
-    .description {
-      grid-column: span 2;
-      border-bottom: 1px solid black;
+    .article-info-image {
+      grid-column: span 1;
     }
 
-    .date {
-      border-right: 1px solid black;
-    }
-
-    .description,
-    .date,
-    .reference {
+    .article-info-text {
       padding: 12px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 
@@ -66,10 +81,6 @@
       margin-bottom: 48px;
     }
 
-    a {
-      // pointer-events: none;
-    }
-
     a[rel*="attachment"] {
       pointer-events: none;
 
@@ -78,8 +89,16 @@
       }
     }
 
+    img[alt*="advertisement"] {
+      display: none;
+    }
 
-    img,
+    img {
+      border: 1px solid black;
+      width: calc(100% - 2px);
+      height: auto;
+    }
+
     iframe {
       border: 1px solid black;
       width: calc(100% - 2px);
@@ -99,5 +118,13 @@
 
   p {
     line-height: 30px;
+  }
+}
+
+@media (max-width: 900px) {
+  .article-content {
+    max-width: 800px;
+    margin: auto;
+    padding: 0 12px;
   }
 }

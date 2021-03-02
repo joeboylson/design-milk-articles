@@ -6,6 +6,7 @@ import { filterArticles } from '../utils';
 // components
 import Article from '../Article';
 import ArticleList from '../ArticleList';
+import Footer from "../Footer";
 
 // utils
 
@@ -28,10 +29,12 @@ const App = () => {
       <Switch>
         <Route path="/article/:articleId">
           <Article articles={articles}/>
+          <Footer/>
         </Route>
         
         <Route path={[ "/articles", "/category/:category", "/" ]}>
           <ArticleList articles={articles}/>
+          <Footer/>
         </Route>
 
       </Switch>

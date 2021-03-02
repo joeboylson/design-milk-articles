@@ -46,9 +46,34 @@ p {
 }
 
 a {
-  color: blue;
+  color: #014afe;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  cursor: pointer;
 }
 
 .mono {
   font-family: 'Roboto Mono', monospace;
+}
+
+.small {
+  font-size: 12px !important;
+  line-height: 16px !important;
+}
+
+@mixin transition {
+  transition-duration: 200ms;
+  transition-duration: cubic-bezier(0.79,0.14,0.15,0.86);
+}
+
+@media (max-width: 650px) {
+  h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
 }

@@ -1,7 +1,9 @@
+@import '../style.scss';
+
 #article-list {
   max-width: 1200px;
-  margin: 48px auto;
-  padding: 0 48px;
+  margin: auto;
+  padding: 48px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -13,6 +15,7 @@
     flex-wrap: wrap;
 
     a {
+      @include transition;
       padding: 4px 8px;
       margin: 0 4px 4px 0;
       border: 1px solid black;
@@ -28,6 +31,37 @@
         background-color: #014afe;
         color: #DDD;
       }
+    }
+  }
+
+}
+
+@media (max-width: 900px) {
+  #article-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin: auto;
+    padding: 24px;
+
+    .pagination {
+      grid-column: span 4;
+    }  
+
+    .article-card {
+      grid-column: span 2;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  #article-list {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+    margin: auto;
+    padding: 12px;
+
+    .pagination, .article-card {
+      grid-column: span 1;
     }
   }
 }

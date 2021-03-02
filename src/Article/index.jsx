@@ -29,13 +29,20 @@ const Article = ({articles}) => {
       <div className={'article-content'}>
         <div className={'article-header'}>
           <h2>{article.title}</h2>
-          <img src={article.cover_image}/>
         </div>
 
         <div className={'article-info'}>
-          <p className={'description'}>{article.description}</p>
-          <p className={'date'}>{article.date}</p>
-          <p className={'reference'}>Article By: <a href={article.posted_by_label.href}>{article.posted_by_label.name}</a></p>
+          <div className={'article-info-image'}>
+            <img src={article.cover_image} alt={'article cover'}/>
+          </div>
+
+          <div className={'article-info-text'}>
+            <p className={'description mono small'}>{article.description}</p>
+            <p>\\\</p>
+            <p className={'date mono small'}>{article.date}</p>
+            <p>\\\</p>
+            <p className={'reference mono small'}>Article By: <a href={article.posted_by_label.href} target={'__blank'}>{article.posted_by_label.name}</a></p>
+          </div>
         </div>
 
         {/* 

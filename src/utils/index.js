@@ -1,4 +1,4 @@
-import { take, kebabCase, uniqBy, pull } from 'lodash';
+import { kebabCase, uniqBy, pull } from 'lodash';
 
 export const filterArticles = (_articles) => {
 
