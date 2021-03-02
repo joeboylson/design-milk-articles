@@ -1,6 +1,5 @@
 import requests
 import json
-import uuid
 import dateutil.relativedelta
 from tqdm import tqdm
 from datetime import datetime
