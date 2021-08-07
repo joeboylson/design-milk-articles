@@ -16,7 +16,7 @@ const App = () => {
 
   useEffect(() => {
     if (!articles) {
-      fetch("/data/articles.json")
+      fetch("/data")
         .then(response => response.json())
         .then(json => setArticles( filterArticles(json)))
     }

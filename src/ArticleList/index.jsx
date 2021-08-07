@@ -31,6 +31,7 @@ const ArticleList = ({articles}) => {
         const to = `${category ? `/category/${category}` : 'articles'}?page=${i+1}`
         const className = (i+1) === page ? 'active' : ''
         return <Link 
+          key={i}
           to={to} 
           className={className}
           onClick={() => window.scrollTo(0, 0)}
@@ -44,10 +45,10 @@ const ArticleList = ({articles}) => {
 
       <div className={'pagination'}>
        <Link to={`/`} className={!category ? 'active' : ''}>All Categories</Link>
-        { categories.map(c => {
+        { categories.map((c, index) => {
           const to = `${c ? `/category/${kebabCase(c)}` : 'articles'}?page=1`
           const className = kebabCase(c) === category ? 'active' : ''
-          return <Link to={to} className={className}> {c} </Link>
+          return <Link key={index} to={to} className={className}> {c} </Link>
         }) }
       </div>
 
@@ -55,7 +56,7 @@ const ArticleList = ({articles}) => {
 
       { _articles.map( (article, index) => {
         return <ArticleCard 
-          lay={index}
+          key={index}
           article={article} 
           link={`/article/${article.id}`}
           category={category}

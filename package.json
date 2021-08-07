@@ -2,6 +2,7 @@
   "name": "cra",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -16,7 +17,7 @@
   },
   "scripts": {
     "develop": "react-scripts start",
-    "production": "serve ./build",
+    "production": "python app.py",
     "build": "react-scripts build",
     "buildjson": "python build.py",
     "test": "react-scripts test",
