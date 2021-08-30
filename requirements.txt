@@ -5,3 +5,4 @@ beautifulsoup4==4.8.0
 lxml==4.6.2
 apscheduler==3.7.0
 Flask==1.0.3
+xmltodict=0.12.0
